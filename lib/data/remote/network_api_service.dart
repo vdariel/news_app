@@ -10,12 +10,20 @@ class NetworkApiService extends BaseApiService {
   Future getAllNewsResponse(String url, String category) async {
     dynamic responseJson;
     try {
+      dynamic query;
       if (category.isEmpty) {
-        var query = {"access_key": apiKey, "countries": "us"};
-        var uri = Uri.http(baseUrl, url, query);
-        final response = await http.get(uri);
-        responseJson = returnResponse(response);
+        query = {'access_key': apiKey, 'countries': 'us'};
+      } else {
+        query = {
+          'access_key': apiKey,
+          'countries': 'us',
+          'categories': category
+        };
       }
+
+      var uri = Uri.http(baseUrl, url, query);
+      final response = await http.get(uri);
+      responseJson = returnResponse(response);
     } catch (e) {
       if (e is AppException) {
         throw FetchDataException(e.toString());

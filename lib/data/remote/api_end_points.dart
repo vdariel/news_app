@@ -1,3 +1,3 @@
 class ApiEndPoints {
-  final String getNewsList = '';
+  final String getNewsList = 'v1/news';
 }
