@@ -41,6 +41,7 @@ class NetworkApiService extends BaseApiService {
     switch (response.statusCode) {
       case 200:
         dynamic responseJson = jsonDecode(response.body);
+        responseJson['status'] = response.statusCode == 200 ? 'ok' : 'error';
         return responseJson;
       case 400:
         throw BadRequestException(response.toString());

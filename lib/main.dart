@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/data/model/news_list/news_list.dart';
+import 'package:news_app/repository/news/news_repo_imp.dart';
 
 void main() {
   runApp(const MyApp());
